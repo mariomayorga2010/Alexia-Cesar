@@ -15,16 +15,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:       #f7f3ee;
-      --warm-white:  #fdfaf6;
-      --gold:        #b8965a;
-      --gold-light:  #d4af7a;
-      --charcoal:    #2c2825;
-      --muted:       #8a7f74;
-      --border:      rgba(184,150,90,.25);
-      --ff-serif:    'Cormorant Garamond', Georgia, serif;
-      --ff-sans:     'Jost', sans-serif;
-      --ease-out:    cubic-bezier(.22, 1, .36, 1);
+      --cream:        #f7f3ee;
+      --warm-white:   #fdfaf6;
+      --gold:         #b8965a;
+      --gold-light:   #d4af7a;
+      --charcoal:     #2c2825;
+      --muted:        #8a7f74;
+      --border:       rgba(184,150,90,.25);
+      --ff-serif:     'Cormorant Garamond', Georgia, serif;
+      --ff-sans:      'Jost', sans-serif;
+      --ease-out:     cubic-bezier(.22, 1, .36, 1);
     }
 
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -72,19 +72,19 @@
     nav a:hover { opacity: .65; }
 
     /* GALLERY */
-.gallery-section{padding:5rem 0;overflow:hidden;background:var(--warm)}
-.gallery-inner{padding:0 1.5rem;max-width:900px;margin:0 auto 3rem}
-.carousel-track{display:flex;gap:1rem;padding:0 1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab}
-.carousel-track::-webkit-scrollbar{display:none}
-.carousel-track.dragging{cursor:grabbing;user-select:none}
-.carousel-slide{flex:0 0 calc(80vw - 2rem);max-width:380px;scroll-snap-align:center;border-radius:12px;overflow:hidden;background:var(--cream);box-shadow:0 8px 40px rgba(44,36,22,0.12)}
-.photo-placeholder{width:100%;padding-bottom:130%;position:relative;overflow:hidden}
-.photo-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem}
-.photo-icon{font-size:3rem;opacity:0.3}
-.photo-caption{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text-soft);padding:1.25rem 1.5rem;border-top:1px solid rgba(122,140,110,0.2)}
-.carousel-dots{display:flex;justify-content:center;gap:0.5rem;margin-top:2rem;padding:0 1.5rem}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--sage-light);transition:all 0.3s;cursor:pointer}
-.dot.active{background:var(--gold);width:20px;border-radius:3px}
+    .gallery-section{padding:5rem 0;overflow:hidden;background:var(--warm)}
+    .gallery-inner{padding:0 1.5rem;max-width:900px;margin:0 auto 3rem}
+    .carousel-track{display:flex;gap:1rem;padding:0 1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab}
+    .carousel-track::-webkit-scrollbar{display:none}
+    .carousel-track.dragging{cursor:grabbing;user-select:none}
+    .carousel-slide{flex:0 0 calc(80vw - 2rem);max-width:380px;scroll-snap-align:center;border-radius:12px;overflow:hidden;background:var(--cream);box-shadow:0 8px 40px rgba(44,36,22,0.12)}
+    .photo-placeholder{width:100%;padding-bottom:130%;position:relative;overflow:hidden}
+    .photo-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem}
+    .photo-icon{font-size:3rem;opacity:0.3}
+    .photo-caption{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text-soft);padding:1.25rem 1.5rem;border-top:1px solid rgba(122,140,110,0.2)}
+    .carousel-dots{display:flex;justify-content:center;gap:0.5rem;margin-top:2rem;padding:0 1.5rem}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--sage-light);transition:all 0.3s;cursor:pointer}
+    .dot.active{background:var(--gold);width:20px;border-radius:3px}
 
     /* ─────────────────────────────────────────────
        SECTION SHARED
@@ -145,11 +145,6 @@
       place-items: center;
     }
 
-    /* ── REEMPLAZA AQUÍ EL VIDEO ──
-       Cambia el atributo src del elemento <source> dentro de #hero-video
-       con la ruta a tu propio archivo de video (MP4 recomendado).
-       Ejemplo: src="video/boda.mp4"
-    ── ─────────────────────────── */
     #hero-video {
       position: absolute;
       inset: 0;
@@ -170,7 +165,6 @@
       z-index: 1;
     }
 
-    /* Textura de grano sutil */
     .hero-overlay::after {
       content: '';
       position: absolute;
@@ -315,10 +309,6 @@
 
     #gallery .section-inner { text-align: center; }
 
-    /* ── REEMPLAZA AQUÍ LAS IMÁGENES ──
-       Dentro de .gallery-grid, reemplaza cada atributo src="…"
-       con las URLs o rutas locales de tus propias fotos.
-    ── ─────────────────────────────── */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -326,7 +316,6 @@
       margin-top: 3rem;
     }
 
-    /* Celdas grandes en pantallas amplias */
     @media (min-width: 700px) {
       .gallery-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -409,13 +398,10 @@
       text-align: center;
     }
 
-    .dresscode-note {
-      margin-top: 2.5rem;
-      font-family: var(--ff-serif);
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--muted);
-    }
+    /* ─────────────────────────────────────────────
+       NUEVA SECCIÓN: MESA DE REGALOS
+    ───────────────────────────────────────────── */
+    #regalos { background: var(--cream); text-align: center; }
 
     /* ─────────────────────────────────────────────
        5. RSVP
@@ -463,7 +449,6 @@
     }
 
     .form-group input,
-    .form-group select,
     .form-group textarea {
       background: transparent;
       border: none;
@@ -479,27 +464,17 @@
       -webkit-appearance: none;
     }
 
-    .form-group select {
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8965a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right .5rem center;
-      padding-right: 2rem;
-    }
-
     .form-group textarea {
       resize: vertical;
       min-height: 80px;
     }
 
     .form-group input:focus,
-    .form-group select:focus,
     .form-group textarea:focus {
       border-color: var(--gold);
     }
 
     .form-group input.error,
-    .form-group select.error,
     .form-group textarea.error {
       border-color: #c0392b;
     }
@@ -527,31 +502,11 @@
       cursor: pointer;
       transition: background .3s, transform .2s;
       align-self: flex-start;
+      text-decoration: none;
     }
 
     .btn-rsvp:hover { background: var(--gold); transform: translateY(-1px); }
     .btn-rsvp:active { transform: translateY(0); }
-
-    /* Mensaje de éxito */
-    #rsvp-success {
-      display: none;
-      text-align: center;
-      padding: 2.5rem;
-      border: 1px solid var(--border);
-    }
-
-    #rsvp-success.visible { display: block; }
-
-    #rsvp-success .success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-
-    #rsvp-success h3 {
-      font-family: var(--ff-serif);
-      font-size: 1.8rem;
-      font-weight: 300;
-      margin-bottom: .5rem;
-    }
-
-    #rsvp-success p { font-size: .85rem; color: var(--muted); }
 
     /* ─────────────────────────────────────────────
        FOOTER
@@ -575,7 +530,7 @@
     footer p { font-size: .72rem; letter-spacing: .12em; }
 
     /* ─────────────────────────────────────────────
-       ANIMACIONES DE ENTRADA (IntersectionObserver)
+       ANIMACIONES DE ENTRADA
     ───────────────────────────────────────────── */
     .reveal {
       opacity: 0;
@@ -599,6 +554,7 @@
     <a href="#countdown">Fecha</a>
     <a href="#gallery">Galería</a>
     <a href="#dresscode">Vestimenta</a>
+    <a href="#regalos">Regalos</a>
     <a href="#rsvp">Asistencia</a>
   </nav>
 
@@ -606,17 +562,6 @@
        1. HERO — VIDEO DE FONDO
   ════════════════════════════════════════ -->
   <section id="hero" aria-label="Portada">
-
-    <!--
-      ══ REEMPLAZA EL VIDEO ══════════════════════════
-      Cambia el src del <source> por la URL o ruta
-      local de tu video (formato MP4, H.264).
-      Ejemplo: src="assets/video-boda.mp4"
-      También puedes añadir un poster="thumbnail.jpg"
-      en el elemento <video> para mostrar una imagen
-      mientras el video carga.
-      ═════════════════════════════════════════════
-    -->
     <video
       id="hero-video"
       autoplay
@@ -627,7 +572,6 @@
       aria-hidden="true"
     >
       <source src="FOTOS/WhatsApp Video 2026-04-12 at 9.00.37 PM.mp4" type="video/mp4" />
-      <!-- ↑ Video de placeholder — reemplaza con tu propio video -->
     </video>
 
     <div class="hero-overlay" aria-hidden="true"></div>
@@ -639,14 +583,8 @@
         Alexia <span class="hero-amp">&</span> Cesar
       </h1>
 
-      <!--
-        ══ REEMPLAZA LA FECHA VISIBLE ══════════════
-        Cambia el texto a continuación con la fecha real
-        de tu boda. Esta línea es solo decorativa (texto).
-        La lógica del contador se ajusta más abajo en JS.
-        ══════════════════════════════════════════
-      -->
-      <p class="hero-date">Sábado · 14 de Febrero, 2026</p>
+      <!-- FECHA ACTUALIZADA -->
+      <p class="hero-date">Viernes · 13 de Noviembre, 2026</p>
 
       <button class="hero-scroll" onclick="document.getElementById('countdown').scrollIntoView({behavior:'smooth'})" aria-label="Ir a la siguiente sección">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -655,7 +593,6 @@
       </button>
     </div>
   </section>
-
 
   <!-- ════════════════════════════════════════
        2. CONTADOR REGRESIVO
@@ -689,276 +626,216 @@
     </div>
   </section>
 
-<style>
-  /* --- REGLAS PARA UNIFICAR EL TAMAÑO DE LAS FOTOS --- */
-  .photo-card {
-    width: 100%;
-    /* aspect-ratio define la proporción. 
-       4/5 es ideal para retratos. 
-       Usa 1/1 para fotos cuadradas o 16/9 para horizontales */
-    aspect-ratio: 4 / 5; 
-    overflow: hidden; 
-    border-radius: 8px;
-    background-color: var(--bg-soft, #f4f4f4); /* Fondo de carga */
-  }
+  <!-- ════════════════════════════════════════
+       CARRUSEL (Momentos) - SECCIÓN CONSERVADA
+  ════════════════════════════════════════ -->
+  <style>
+    .photo-card {
+      width: 100%;
+      aspect-ratio: 4 / 5; 
+      overflow: hidden; 
+      border-radius: 8px;
+      background-color: var(--bg-soft, #f4f4f4);
+    }
+    .photo-image {
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover;
+      display: block;
+    }
+  </style>
 
-  .photo-image {
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; /* Evita que la foto se deforme */
-    display: block;
-  }
-</style>
-
-<div class="gallery-section">
-  <div class="gallery-inner reveal">
-    <span class="section-label">Nuestros momentos</span>
-    <h2 class="section-title">Momentos que nos trajeron <em>aquí</em></h2>
-    <div class="thin-divider"></div>
-    <p style="color:var(--text-soft);font-size:0.9rem;line-height:1.7;max-width:500px">
-      Un recorrido por los momentos que nos convirtieron en quienes somos hoy. Cada foto, una razón más para celebrar.
-    </p>
+  <div class="gallery-section">
+    <div class="gallery-inner reveal">
+      <span class="section-label">Nuestros momentos</span>
+      <h2 class="section-title">Momentos que nos trajeron <em>aquí</em></h2>
+      <div class="thin-divider"></div>
+      <p style="color:var(--text-soft);font-size:0.9rem;line-height:1.7;max-width:500px">
+        Un recorrido por los momentos que nos convirtieron en quienes somos hoy. Cada foto, una razón más para celebrar.
+      </p>
+    </div>
+    
+    <div class="carousel-track" id="carousel">
+      <div class="carousel-slide">
+        <div class="photo-card card-c1">
+          <img src="FOTOS/1.jpeg" alt="El primer día que nos vimos" class="photo-image">
+        </div>
+        <p class="photo-caption">El primer día que nos vimos</p>
+      </div>
+      <div class="carousel-slide">
+        <div class="photo-card card-c2">
+          <img src="FOTOS/2.jpeg" alt="Nuestra primera aventura juntos" class="photo-image">
+        </div>
+        <p class="photo-caption">Felices...</p>
+      </div>
+      <div class="carousel-slide">
+        <div class="photo-card card-c3">
+          <img src="FOTOS/3.jpeg" alt="El día que dijimos para siempre" class="photo-image">
+        </div>
+        <p class="photo-caption">El día que dijimos "para siempre"</p>
+      </div>
+      <div class="carousel-slide">
+        <div class="photo-card card-c4">
+          <img src="FOTOS/4.jpeg" alt="Comprometidos y felices" class="photo-image">
+        </div>
+        <p class="photo-caption">Nuestra primera aventura juntos</p>
+      </div>
+      <div class="carousel-slide">
+        <div class="photo-card card-c5">
+          <img src="FOTOS/5.jpeg" alt="Y ahora… ¡nos casamos!" class="photo-image">
+        </div>
+        <p class="photo-caption">Y ahora… ¡nos casamos!</p>
+      </div>
+      <div class="carousel-slide">
+        <div class="photo-card card-c6">
+          <img src="FOTOS/6.jpeg" alt="Un paso más cerca del gran día" class="photo-image">
+        </div>
+        <p class="photo-caption">Un paso más cerca del gran día</p>
+      </div>
+    </div>
+    
+    <div class="carousel-dots" id="dots">
+      <div class="dot active" data-i="0"></div>
+      <div class="dot" data-i="1"></div>
+      <div class="dot" data-i="2"></div>
+      <div class="dot" data-i="3"></div>
+      <div class="dot" data-i="4"></div>
+      <div class="dot" data-i="5"></div>
+    </div>
   </div>
-  
-  <div class="carousel-track" id="carousel">
-    
-    <!-- FOTO 1 -->
-    <div class="carousel-slide">
-      <div class="photo-card card-c1">
-        <img src="FOTOS/1.jpeg" alt="El primer día que nos vimos" class="photo-image">
-      </div>
-      <p class="photo-caption">El primer día que nos vimos</p>
-    </div>
-    
-    <!-- FOTO 2 -->
-    <div class="carousel-slide">
-      <div class="photo-card card-c2">
-        <img src="FOTOS/2.jpeg" alt="Nuestra primera aventura juntos" class="photo-image">
-      </div>
-      <p class="photo-caption">Felices...</p>
-    </div>
-    
-    <!-- FOTO 3 -->
-    <div class="carousel-slide">
-      <div class="photo-card card-c3">
-        <img src="FOTOS/3.jpeg" alt="El día que dijimos para siempre" class="photo-image">
-      </div>
-      <p class="photo-caption">El día que dijimos "para siempre"</p>
-    </div>
-    
-    <!-- FOTO 4 -->
-    <div class="carousel-slide">
-      <div class="photo-card card-c4">
-        <img src="FOTOS/4.jpeg" alt="Comprometidos y felices" class="photo-image">
-      </div>
-      <p class="photo-caption">Nuestra primera aventura juntos</p>
-    </div>
-    
-    <!-- FOTO 5 -->
-    <div class="carousel-slide">
-      <div class="photo-card card-c5">
-        <img src="FOTOS/5.jpeg" alt="Y ahora… ¡nos casamos!" class="photo-image">
-      </div>
-      <p class="photo-caption">Y ahora… ¡nos casamos!</p>
-    </div>
-
-    <!-- FOTO 6 -->
-    <div class="carousel-slide">
-      <div class="photo-card card-c6">
-        <img src="FOTOS/6.jpeg" alt="Un paso más cerca del gran día" class="photo-image">
-      </div>
-      <p class="photo-caption">Un paso más cerca del gran día</p>
-    </div>
-    
-  </div>
-  
-  <div class="carousel-dots" id="dots">
-    <div class="dot active" data-i="0"></div>
-    <div class="dot" data-i="1"></div>
-    <div class="dot" data-i="2"></div>
-    <div class="dot" data-i="3"></div>
-    <div class="dot" data-i="4"></div>
-    <div class="dot" data-i="5"></div>
-  </div>
-</div>
-
 
   <!-- ════════════════════════════════════════
-       3. GALERÍA DE FOTOS
+       3. GALERÍA DE FOTOS (Grid) - SECCIÓN CONSERVADA
   ════════════════════════════════════════ -->
   <section id="gallery" aria-label="Galería de fotos">
     <div class="section-inner">
       <span class="section-label reveal">Nuestra historia</span>
       <h2 class="section-title reveal">El inicio de nuestro<br>camino al altar</h2>
-
       <div class="divider reveal"><span>✦</span></div>
 
-      <!--
-        ══ REEMPLAZA LAS IMÁGENES ═════════════════════
-        Sustituye cada atributo src con la URL o ruta
-        de tus propias fotos. Recomendado: imágenes
-        de relación de aspecto 1:1 (cuadradas) o 3:4.
-        Puedes usar Cloudinary, Google Photos, etc.
-        ══════════════════════════════════════════════
-      -->
       <div class="gallery-grid" role="list">
-
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2554.jpg"
-               alt="Alexia y Cesar — foto 1" loading="lazy" />
-        </div>
-
-        <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2518.jpg"
-               alt="Alexia y Cesar — foto 2" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2554.jpg" alt="Alexia y Cesar — foto 1" loading="lazy" />
         </div>
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2580.jpg"
-               alt="Alexia y Cesar — foto 2" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2518.jpg" alt="Alexia y Cesar — foto 2" loading="lazy" />
         </div>
-
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2505.jpg"
-               alt="Alexia y Cesar — foto 3" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2580.jpg" alt="Alexia y Cesar — foto 2" loading="lazy" />
         </div>
-
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2547.jpg"
-               alt="Alexia y Cesar — foto 4" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2505.jpg" alt="Alexia y Cesar — foto 3" loading="lazy" />
         </div>
-
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2569.jpg"
-               alt="Alexia y Cesar — foto 5" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2547.jpg" alt="Alexia y Cesar — foto 4" loading="lazy" />
         </div>
-
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2603.jpg"
-               alt="Alexia y Cesar — foto 6" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2569.jpg" alt="Alexia y Cesar — foto 5" loading="lazy" />
         </div>
-
+        <div class="gallery-item reveal" role="listitem">
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2603.jpg" alt="Alexia y Cesar — foto 6" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ════════════════════════════════════════
+       4. DRESS CODE - SECCIÓN CONSERVADA
+  ════════════════════════════════════════ -->
+  <style>
+    .color-palette-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+      align-items: center;
+      width: 100%;
+    }
+    .color-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      width: 120px;
+      font-size: 0.85rem;
+      color: var(--text-soft, #555);
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 0.05em;
+    }
+    .color-swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+  </style>
+
+  <section id="dresscode" aria-label="Código de vestimenta">
+    <div class="section-inner">
+      <span class="section-label reveal">Código de vestimenta</span>
+      <h2 class="section-title reveal">Viste a la altura<br>del momento</h2>
+      <div class="divider reveal"><span>✦</span></div>
+
+      <div class="dresscode-cards">
+        <article class="dc-card reveal">
+          <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 60px; height: 60px;">
+            <path d="M24 8c-4 0-7 3-7 7v2l-6 4v17h26V21l-6-4v-2c0-4-3-7-7-7z"/>
+            <path d="M17 21l7 5 7-5"/>
+            <path d="M24 26v12"/>
+            <circle cx="24" cy="7" r="3"/>
+          </svg>
+          <h3 class="dc-title">Caballeros</h3>
+          <p class="dc-desc">Traje oscuro o smoking.<br>Corbata o moño.<br>Zapato formal de vestir.</p>
+        </article>
+
+        <article class="dc-card reveal">
+          <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 60px; height: 60px;">
+            <circle cx="24" cy="8" r="4"/>
+            <path d="M18 14c0 0-2 5-2 9h16c0-4-2-9-2-9"/>
+            <path d="M16 23c-2 6-5 13-5 15h26c0-2-3-9-5-15"/>
+          </svg>
+          <h3 class="dc-title">Damas</h3>
+          <p class="dc-desc">Vestido largo o coctel elegante.<br>Tonos neutros, pastel o joyas.<br>Evitar color blanco o marfil.</p>
+        </article>
+
+        <article class="dc-card reveal" style="display: flex; flex-direction: column; align-items: center;">
+          <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 60px; height: 60px;">
+            <circle cx="24" cy="24" r="16"/>
+            <circle cx="18" cy="20" r="3"/>
+            <circle cx="30" cy="20" r="3"/>
+            <circle cx="18" cy="31" r="3"/>
+            <circle cx="30" cy="31" r="3"/>
+            <circle cx="24" cy="15" r="3"/>
+          </svg>
+          <h3 class="dc-title">Paleta sugerida</h3>
+          <div class="color-palette-list">
+            <div class="color-item"><span class="color-swatch" style="background-color: #B8A28E;"></span><span>#B8A28E</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color: #96806C;"></span><span>#96806C</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color: #76614F;"></span><span>#76614F</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color: #524133;"></span><span>#524133</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color: #36422E;"></span><span>#36422E</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- ════════════════════════════════════════
-       4. DRESS CODE
+       NUEVO: MESA DE REGALOS
   ════════════════════════════════════════ -->
- <style>
-  /* --- ESTILOS PARA LAS MUESTRAS DE COLOR --- */
-  .color-palette-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
-    align-items: center;
-    width: 100%;
-  }
-
-  .color-item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
-    width: 120px; /* Ancho fijo para mantener los textos alineados */
-    font-size: 0.85rem;
-    color: var(--text-soft, #555);
-    font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada para los códigos */
-    letter-spacing: 0.05em;
-  }
-
-  .color-swatch {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%; /* Círculos elegantes */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-    display: inline-block;
-    border: 1px solid rgba(0,0,0,0.05);
-  }
-</style>
-
-<section id="dresscode" aria-label="Código de vestimenta">
-  <div class="section-inner">
-    <span class="section-label reveal">Código de vestimenta</span>
-    <h2 class="section-title reveal">Viste a la altura<br>del momento</h2>
-    <div class="divider reveal"><span>✦</span></div>
-
-    <div class="dresscode-cards">
-
-      <!-- Caballeros -->
-      <article class="dc-card reveal">
-        <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 60px; height: 60px;">
-          <path d="M24 8c-4 0-7 3-7 7v2l-6 4v17h26V21l-6-4v-2c0-4-3-7-7-7z"/>
-          <path d="M17 21l7 5 7-5"/>
-          <path d="M24 26v12"/>
-          <circle cx="24" cy="7" r="3"/>
-        </svg>
-        <h3 class="dc-title">Caballeros</h3>
-        <p class="dc-desc">
-          Traje oscuro o smoking.<br>
-          Corbata o moño.<br>
-          Zapato formal de vestir.
-        </p>
-      </article>
-
-      <!-- Damas -->
-      <article class="dc-card reveal">
-        <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 60px; height: 60px;">
-          <circle cx="24" cy="8" r="4"/>
-          <path d="M18 14c0 0-2 5-2 9h16c0-4-2-9-2-9"/>
-          <path d="M16 23c-2 6-5 13-5 15h26c0-2-3-9-5-15"/>
-        </svg>
-        <h3 class="dc-title">Damas</h3>
-        <p class="dc-desc">
-          Vestido largo o coctel elegante.<br>
-          Tonos neutros, pastel o joyas.<br>
-          Evitar color blanco o marfil.
-        </p>
-      </article>
-
-      <!-- Paleta de color (Con muestras CSS puras) -->
-      <article class="dc-card reveal" style="display: flex; flex-direction: column; align-items: center;">
-        <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 60px; height: 60px;">
-          <circle cx="24" cy="24" r="16"/>
-          <circle cx="18" cy="20" r="3"/>
-          <circle cx="30" cy="20" r="3"/>
-          <circle cx="18" cy="31" r="3"/>
-          <circle cx="30" cy="31" r="3"/>
-          <circle cx="24" cy="15" r="3"/>
-        </svg>
-        <h3 class="dc-title">Paleta sugerida</h3>
-        
-        <!-- Lista de muestras hexadecimales -->
-        <div class="color-palette-list">
-          <div class="color-item">
-            <span class="color-swatch" style="background-color: #B8A28E;"></span>
-            <span>#B8A28E</span>
-          </div>
-          <div class="color-item">
-            <span class="color-swatch" style="background-color: #96806C;"></span>
-            <span>#96806C</span>
-          </div>
-          <div class="color-item">
-            <span class="color-swatch" style="background-color: #76614F;"></span>
-            <span>#76614F</span>
-          </div>
-          <div class="color-item">
-            <span class="color-swatch" style="background-color: #524133;"></span>
-            <span>#524133</span>
-          </div>
-          <div class="color-item">
-            <span class="color-swatch" style="background-color: #36422E;"></span>
-            <span>#36422E</span>
-          </div>
-        </div>
-
-      </article>
-
+  <section id="regalos" aria-label="Mesa de Regalos">
+    <div class="section-inner" style="text-align: center;">
+      <span class="section-label reveal">Mesa de Regalos</span>
+      <h2 class="section-title reveal">Nuestro nuevo hogar</h2>
+      <div class="divider reveal"><span>✦</span></div>
+      <p class="reveal" style="font-size: .9rem; line-height: 1.85; color: var(--muted); max-width: 600px; margin: 0 auto 2rem;">
+        Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, te invitamos a ver nuestra mesa de regalos.
+      </p>
+      <a href="https://www.amazon.com.mx/wedding/guest-view/3C7OMUFREAFDN" target="_blank" class="btn-rsvp reveal" style="display: inline-block;">Ver Mesa en Amazon</a>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- ════════════════════════════════════════
        5. RSVP — CONFIRMACIÓN DE ASISTENCIA
@@ -977,41 +854,26 @@
             Tu presencia hará aún más especial este día tan importante para nosotros.
           </p>
 
-          <!--
-            ══ REEMPLAZA LOS DATOS DE LUGAR ══════════
-            Actualiza el nombre del salón, dirección y
-            hora con los datos reales de tu evento.
-            ══════════════════════════════════════════
-          -->
+          <!-- UBICACIÓN ACTUALIZADA -->
           <address class="reveal">
-            <strong>Salón Gran Palacio</strong><br>
-            Av. de los Novios 42, Ciudad de México<br>
-            Recepción · 7:00 PM<br>
-            Ceremonia · 5:00 PM
+            <strong>Jardín Piedra y Viento</strong><br>
+            Parcela 492 Z1 P1/1, entre Av. Ejidos 1,<br>
+            Santa María Mazatla, Jilotzingo,<br>
+            Estado de México, C.P. 54570.
           </address>
+          
+          <a href="https://share.google/u8hC2w2zIt4sEmJDd" target="_blank" class="reveal" style="display: inline-block; margin-top: 1rem; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;">
+            Ver ubicación en Google Maps
+          </a>
         </div>
 
-        <!-- Formulario -->
+        <!-- Formulario (MODIFICADO PARA PHP) -->
         <div>
-          <form class="rsvp-form" id="rsvp-form" novalidate aria-label="Formulario de confirmación">
-
+          <form class="rsvp-form" id="rsvp-form" method="POST" action="enviar.php" novalidate aria-label="Formulario de confirmación">
             <div class="form-group">
               <label for="name">Nombre completo *</label>
-              <input type="text" id="name" name="name" autocomplete="name" placeholder="Tu nombre completo" />
+              <input type="text" id="name" name="name" autocomplete="name" placeholder="Tu nombre completo" required />
               <span class="error-msg" id="name-err">Por favor ingresa tu nombre.</span>
-            </div>
-
-            <div class="form-group">
-              <label for="guests">Número de acompañantes *</label>
-              <select id="guests" name="guests">
-                <option value="">— Selecciona —</option>
-                <option value="0">Solo yo</option>
-                <option value="1">1 acompañante</option>
-                <option value="2">2 acompañantes</option>
-                <option value="3">3 acompañantes</option>
-                <option value="4">4 acompañantes</option>
-              </select>
-              <span class="error-msg" id="guests-err">Por favor selecciona el número de acompañantes.</span>
             </div>
 
             <div class="form-group">
@@ -1020,21 +882,12 @@
             </div>
 
             <button type="submit" class="btn-rsvp">Confirmar asistencia</button>
-
           </form>
-
-          <!-- Mensaje de éxito (se muestra tras enviar) -->
-          <div id="rsvp-success" role="alert" aria-live="polite">
-            <div class="success-icon">✦</div>
-            <h3>¡Gracias por confirmar!</h3>
-            <p>Estamos felices de contarte entre nuestros invitados.<br>¡Nos vemos pronto!</p>
-          </div>
         </div>
 
       </div>
     </div>
   </section>
-
 
   <!-- ════════════════════════════════════════
        FOOTER
@@ -1043,7 +896,6 @@
     <p class="footer-names">Alexia & Cesar</p>
     <p>Con todo nuestro amor &mdash; 2026</p>
   </footer>
-
 
   <!-- ════════════════════════════════════════
        JAVASCRIPT
@@ -1065,13 +917,9 @@
 
 
     /* ──────────────────────────────────────────
-       CONTADOR REGRESIVO
-       ═══════════════════════════════════════════
-       REEMPLAZA LA FECHA AQUÍ:
-       Formato: new Date('AÑO-MES-DÍA HH:MM:SS')
-       Ejemplo: new Date('2026-02-14 17:00:00')
+       CONTADOR REGRESIVO (FECHA ACTUALIZADA)
     ────────────────────────────────────────── */
-    const weddingDate = new Date('2026-09-14 17:00:00'); // ← CAMBIA ESTA FECHA
+    const weddingDate = new Date('2026-11-13 17:00:00');
 
     const els = {
       days:  document.getElementById('cd-days'),
@@ -1087,7 +935,6 @@
       const diff = weddingDate - now;
 
       if (diff <= 0) {
-        // ¡Llegó el gran día!
         els.days.textContent  = '00';
         els.hours.textContent = '00';
         els.mins.textContent  = '00';
@@ -1111,7 +958,7 @@
 
 
     /* ──────────────────────────────────────────
-       ANIMACIONES DE SCROLL (IntersectionObserver)
+       ANIMACIONES DE SCROLL
     ────────────────────────────────────────── */
     const revealEls = document.querySelectorAll('.reveal');
 
@@ -1119,7 +966,6 @@
       (entries) => {
         entries.forEach((entry, i) => {
           if (entry.isIntersecting) {
-            // Stagger: retraso escalonado por posición en pantalla
             setTimeout(() => entry.target.classList.add('visible'), i * 80);
             revealObserver.unobserve(entry.target);
           }
@@ -1132,10 +978,9 @@
 
 
     /* ──────────────────────────────────────────
-       RSVP — Validación y envío del formulario
+       RSVP — Validación antes de enviar a PHP
     ────────────────────────────────────────── */
     const form    = document.getElementById('rsvp-form');
-    const success = document.getElementById('rsvp-success');
 
     function showError(fieldId, errId, show) {
       const field = document.getElementById(fieldId);
@@ -1145,11 +990,7 @@
     }
 
     form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name   = document.getElementById('name').value.trim();
-      const guests = document.getElementById('guests').value;
-
+      const name = document.getElementById('name').value.trim();
       let valid = true;
 
       if (!name) {
@@ -1159,35 +1000,15 @@
         showError('name', 'name-err', false);
       }
 
-      if (!guests) {
-        showError('guests', 'guests-err', true);
-        valid = false;
-      } else {
-        showError('guests', 'guests-err', false);
+      if (!valid) {
+        e.preventDefault(); // Detiene el envío si el nombre está vacío
       }
-
-      if (!valid) return;
-
-      /* ─────────────────────────────────────────
-         AQUÍ puedes conectar el formulario a un
-         backend o servicio como:
-         - Formspree.io (solo cambia el action del form)
-         - Netlify Forms (añade netlify al <form>)
-         - EmailJS
-         - Tu propia API REST
-      ───────────────────────────────────────── */
-
-      // Simula envío exitoso
-      form.style.display = 'none';
-      success.classList.add('visible');
-      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Si es válido, el navegador continúa con el action="enviar.php"
     });
 
     // Limpiar error en tiempo real
-    ['name', 'guests'].forEach(id => {
-      document.getElementById(id).addEventListener('input', () => {
-        showError(id, id + '-err', false);
-      });
+    document.getElementById('name').addEventListener('input', () => {
+      showError('name', 'name-err', false);
     });
 
   </script>
