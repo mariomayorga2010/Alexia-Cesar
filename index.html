@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alexia & Cesar — Nuestra Boda</title>
+  <title>Alexia & César — Nuestra Boda</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
@@ -403,6 +403,124 @@
     ───────────────────────────────────────────── */
     #regalos { background: var(--cream); text-align: center; }
 
+    /* CLABE highlight box */
+    .clabe-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 1.1rem 1.8rem;
+      margin: 1.5rem auto 2rem;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: clamp(.85rem, 2.2vw, 1.05rem);
+      letter-spacing: .06em;
+      color: var(--charcoal);
+      font-weight: 600;
+    }
+    .clabe-label {
+      font-family: var(--ff-sans);
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: .35rem;
+      font-weight: 400;
+    }
+    .clabe-icon { color: var(--gold); flex-shrink: 0; }
+
+    /* ─────────────────────────────────────────────
+       NOTAS ADICIONALES (No niños / Bebidas)
+    ───────────────────────────────────────────── */
+    .notas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .nota-card {
+      border: 1px solid var(--border);
+      padding: 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .9rem;
+      text-align: center;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .nota-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 32px rgba(184,150,90,.1);
+    }
+    .nota-icon { color: var(--gold); }
+    .nota-title {
+      font-family: var(--ff-serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--charcoal);
+    }
+    .nota-desc {
+      font-size: .8rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* ─────────────────────────────────────────────
+       LUGAR DESTACADO
+    ───────────────────────────────────────────── */
+    .lugar-highlight {
+      background: var(--charcoal);
+      border-radius: 6px;
+      padding: 2.5rem 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .lugar-highlight .lugar-icon { color: var(--gold-light); margin-bottom: 1rem; }
+    .lugar-highlight h3 {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      margin-bottom: .5rem;
+    }
+    .lugar-highlight p {
+      font-size: .82rem;
+      line-height: 2;
+      color: rgba(247,243,238,.65);
+      margin-bottom: 1.2rem;
+    }
+    .lugar-highlight a {
+      display: inline-block;
+      color: var(--gold-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212,175,122,.45);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      transition: border-color .3s, color .3s;
+    }
+    .lugar-highlight a:hover { color: #fff; border-color: #fff; }
+
+    /* MAPA */
+    .map-wrapper {
+      margin-top: 2rem;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 40px rgba(44,36,22,.08);
+    }
+    .map-wrapper iframe {
+      width: 100%;
+      height: 380px;
+      display: block;
+      border: 0;
+    }
+
     /* ─────────────────────────────────────────────
        5. RSVP
     ───────────────────────────────────────────── */
@@ -449,6 +567,7 @@
     }
 
     .form-group input,
+    .form-group select,
     .form-group textarea {
       background: transparent;
       border: none;
@@ -462,6 +581,15 @@
       outline: none;
       width: 100%;
       -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8965a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .5rem center;
+      padding-right: 2rem;
+      cursor: pointer;
     }
 
     .form-group textarea {
@@ -470,11 +598,13 @@
     }
 
     .form-group input:focus,
+    .form-group select:focus,
     .form-group textarea:focus {
       border-color: var(--gold);
     }
 
     .form-group input.error,
+    .form-group select.error,
     .form-group textarea.error {
       border-color: #c0392b;
     }
@@ -487,6 +617,31 @@
     }
 
     .error-msg.visible { display: block; }
+
+    /* Nombres invitados */
+    #guest-names-container {
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .5s var(--ease-out), opacity .4s;
+      opacity: 0;
+    }
+    #guest-names-container.expanded {
+      max-height: 500px;
+      opacity: 1;
+    }
+    .guest-name-field {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      animation: fadeSlide .35s var(--ease-out) both;
+    }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
     .btn-rsvp {
       margin-top: .5rem;
@@ -542,6 +697,85 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* ─────────────────────────────────────────────
+       COLOR PALETTE
+    ───────────────────────────────────────────── */
+    .color-palette-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+      align-items: center;
+      width: 100%;
+    }
+    .color-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      width: 120px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 0.05em;
+    }
+    .color-swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* Foto card */
+    .photo-card {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 8px;
+      background-color: var(--cream);
+    }
+    .photo-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Versículo */
+    .versiculo-block {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .versiculo-ref {
+      font-family: var(--ff-sans);
+      font-size: .65rem;
+      font-weight: 400;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .versiculo-text {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--charcoal);
+    }
+
+    /* Thin divider */
+    .thin-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--border);
+      margin: 1.5rem auto;
+    }
   </style>
 </head>
 
@@ -577,13 +811,14 @@
     <div class="hero-overlay" aria-hidden="true"></div>
 
     <div class="hero-content">
-      <p class="hero-eyebrow">Con amor, te invitamos a nuestra boda</p>
+      <!-- PUNTO 2: Nuevo texto -->
+      <p class="hero-eyebrow">Nuestra aventura está por comenzar y tú eres parte de ella</p>
 
       <h1 class="hero-names">
-        Alexia <span class="hero-amp">&</span> Cesar
+        Alexia <span class="hero-amp">&</span> César
       </h1>
 
-      <!-- FECHA ACTUALIZADA -->
+      <!-- FECHA -->
       <p class="hero-date">Viernes · 13 de Noviembre, 2026</p>
 
       <button class="hero-scroll" onclick="document.getElementById('countdown').scrollIntoView({behavior:'smooth'})" aria-label="Ir a la siguiente sección">
@@ -627,34 +862,26 @@
   </section>
 
   <!-- ════════════════════════════════════════
-       CARRUSEL (Momentos) - SECCIÓN CONSERVADA
+       CARRUSEL (Momentos)
   ════════════════════════════════════════ -->
-  <style>
-    .photo-card {
-      width: 100%;
-      aspect-ratio: 4 / 5; 
-      overflow: hidden; 
-      border-radius: 8px;
-      background-color: var(--bg-soft, #f4f4f4);
-    }
-    .photo-image {
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover;
-      display: block;
-    }
-  </style>
-
   <div class="gallery-section">
     <div class="gallery-inner reveal">
       <span class="section-label">Nuestros momentos</span>
-      <h2 class="section-title">Momentos que nos trajeron <em>aquí</em></h2>
+      <!-- PUNTO 3: Versículo en lugar de "Momentos que nos trajeron aquí" -->
+      <div class="versiculo-block">
+        <p class="versiculo-ref">Corintios 13:4-8</p>
+        <p class="versiculo-text">
+          El amor es paciente, es bondadoso; el amor no tiene envidia, no es presumido ni orgulloso…
+          Todo lo disculpa, todo lo cree, todo lo espera, todo lo soporta.
+          <em>El amor jamás se extingue.</em>
+        </p>
+      </div>
       <div class="thin-divider"></div>
-      <p style="color:var(--text-soft);font-size:0.9rem;line-height:1.7;max-width:500px">
+      <p style="color:var(--muted);font-size:0.9rem;line-height:1.7;max-width:500px">
         Un recorrido por los momentos que nos convirtieron en quienes somos hoy. Cada foto, una razón más para celebrar.
       </p>
     </div>
-    
+
     <div class="carousel-track" id="carousel">
       <div class="carousel-slide">
         <div class="photo-card card-c1">
@@ -693,7 +920,7 @@
         <p class="photo-caption">Un paso más cerca del gran día</p>
       </div>
     </div>
-    
+
     <div class="carousel-dots" id="dots">
       <div class="dot active" data-i="0"></div>
       <div class="dot" data-i="1"></div>
@@ -705,7 +932,7 @@
   </div>
 
   <!-- ════════════════════════════════════════
-       3. GALERÍA DE FOTOS (Grid) - SECCIÓN CONSERVADA
+       3. GALERÍA DE FOTOS (Grid)
   ════════════════════════════════════════ -->
   <section id="gallery" aria-label="Galería de fotos">
     <div class="section-inner">
@@ -715,63 +942,33 @@
 
       <div class="gallery-grid" role="list">
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2554.jpg" alt="Alexia y Cesar — foto 1" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2554.jpg" alt="Alexia y César — foto 1" loading="lazy" />
         </div>
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2518.jpg" alt="Alexia y Cesar — foto 2" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2518.jpg" alt="Alexia y César — foto 2" loading="lazy" />
         </div>
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2580.jpg" alt="Alexia y Cesar — foto 2" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2580.jpg" alt="Alexia y César — foto 3" loading="lazy" />
         </div>
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2505.jpg" alt="Alexia y Cesar — foto 3" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2505.jpg" alt="Alexia y César — foto 4" loading="lazy" />
         </div>
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2547.jpg" alt="Alexia y Cesar — foto 4" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2547.jpg" alt="Alexia y César — foto 5" loading="lazy" />
         </div>
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2569.jpg" alt="Alexia y Cesar — foto 5" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2569.jpg" alt="Alexia y César — foto 6" loading="lazy" />
         </div>
         <div class="gallery-item reveal" role="listitem">
-          <img src="FOTOS/FOTOS EDITADAS/ERI_2603.jpg" alt="Alexia y Cesar — foto 6" loading="lazy" />
+          <img src="FOTOS/FOTOS EDITADAS/ERI_2603.jpg" alt="Alexia y César — foto 7" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
 
   <!-- ════════════════════════════════════════
-       4. DRESS CODE - SECCIÓN CONSERVADA
+       4. DRESS CODE
   ════════════════════════════════════════ -->
-  <style>
-    .color-palette-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 15px;
-      align-items: center;
-      width: 100%;
-    }
-    .color-item {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 12px;
-      width: 120px;
-      font-size: 0.85rem;
-      color: var(--text-soft, #555);
-      font-family: 'Courier New', Courier, monospace;
-      letter-spacing: 0.05em;
-    }
-    .color-swatch {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-      display: inline-block;
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-  </style>
-
   <section id="dresscode" aria-label="Código de vestimenta">
     <div class="section-inner">
       <span class="section-label reveal">Código de vestimenta</span>
@@ -779,8 +976,9 @@
       <div class="divider reveal"><span>✦</span></div>
 
       <div class="dresscode-cards">
+        <!-- Caballeros -->
         <article class="dc-card reveal">
-          <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 60px; height: 60px;">
+          <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:60px;height:60px">
             <path d="M24 8c-4 0-7 3-7 7v2l-6 4v17h26V21l-6-4v-2c0-4-3-7-7-7z"/>
             <path d="M17 21l7 5 7-5"/>
             <path d="M24 26v12"/>
@@ -790,8 +988,9 @@
           <p class="dc-desc">Traje oscuro o smoking.<br>Corbata o moño.<br>Zapato formal de vestir.</p>
         </article>
 
-        <article class="dc-card reveal">
-          <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 60px; height: 60px;">
+        <!-- Damas -->
+        <article class="dc-card reveal" style="display:flex;flex-direction:column;align-items:center">
+          <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:60px;height:60px">
             <circle cx="24" cy="8" r="4"/>
             <path d="M18 14c0 0-2 5-2 9h16c0-4-2-9-2-9"/>
             <path d="M16 23c-2 6-5 13-5 15h26c0-2-3-9-5-15"/>
@@ -800,8 +999,9 @@
           <p class="dc-desc">Vestido largo o coctel elegante.<br>Tonos neutros, pastel o joyas.<br>Evitar color blanco o marfil.</p>
         </article>
 
-        <article class="dc-card reveal" style="display: flex; flex-direction: column; align-items: center;">
-          <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 60px; height: 60px;">
+        <!-- Paleta -->
+        <article class="dc-card reveal" style="display:flex;flex-direction:column;align-items:center">
+          <svg class="dc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:60px;height:60px">
             <circle cx="24" cy="24" r="16"/>
             <circle cx="18" cy="20" r="3"/>
             <circle cx="30" cy="20" r="3"/>
@@ -811,29 +1011,78 @@
           </svg>
           <h3 class="dc-title">Paleta sugerida</h3>
           <div class="color-palette-list">
-            <div class="color-item"><span class="color-swatch" style="background-color: #B8A28E;"></span><span>#B8A28E</span></div>
-            <div class="color-item"><span class="color-swatch" style="background-color: #96806C;"></span><span>#96806C</span></div>
-            <div class="color-item"><span class="color-swatch" style="background-color: #76614F;"></span><span>#76614F</span></div>
-            <div class="color-item"><span class="color-swatch" style="background-color: #524133;"></span><span>#524133</span></div>
-            <div class="color-item"><span class="color-swatch" style="background-color: #36422E;"></span><span>#36422E</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color:#B8A28E"></span><span>#B8A28E</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color:#96806C"></span><span>#96806C</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color:#76614F"></span><span>#76614F</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color:#524133"></span><span>#524133</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color:#36422E"></span><span>#36422E</span></div>
           </div>
         </article>
+      </div>
+
+      <!-- PUNTO 6 & 7: No niños / Llevar bebidas -->
+      <div class="notas-grid" style="margin-top:3rem">
+
+        <!-- No niños -->
+        <article class="nota-card reveal">
+          <svg class="nota-icon" width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="26" cy="26" r="22" stroke="var(--gold)"/>
+            <circle cx="26" cy="14" r="5"/>
+            <path d="M18 24c0-4.4 3.6-8 8-8s8 3.6 8 8v10H18V24z"/>
+            <line x1="8" y1="8" x2="44" y2="44" stroke="#c0392b" stroke-width="2.2"/>
+          </svg>
+          <h3 class="nota-title">Evento para adultos</h3>
+          <p class="nota-desc">
+            Con todo el amor del mundo, es una celebración solo para adultos.<br>
+            Agradecemos tu comprensión.
+          </p>
+        </article>
+
+        <!-- Llevar bebidas -->
+        <article class="nota-card reveal">
+          <svg class="nota-icon" width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 8h20l-3 18c0 4.4-3.1 8-7 8s-7-3.6-7-8L16 8z" stroke="var(--gold)"/>
+            <path d="M36 8l4-4M16 8l-4-4" stroke="var(--gold)"/>
+            <path d="M22 34v6M30 34v6M18 40h16" stroke="var(--gold)"/>
+            <path d="M36 16h4a2 2 0 0 1 0 12h-4" stroke="var(--gold)"/>
+          </svg>
+          <h3 class="nota-title">Trae lo que quieras tomar</h3>
+          <p class="nota-desc">
+            Llevar tus bebidas favoritas para brindar con nosotros.<br>
+            ¡Entre más, mejor la fiesta!
+          </p>
+        </article>
+
       </div>
     </div>
   </section>
 
   <!-- ════════════════════════════════════════
-       NUEVO: MESA DE REGALOS
+       MESA DE REGALOS
   ════════════════════════════════════════ -->
   <section id="regalos" aria-label="Mesa de Regalos">
-    <div class="section-inner" style="text-align: center;">
+    <div class="section-inner" style="text-align:center">
       <span class="section-label reveal">Mesa de Regalos</span>
       <h2 class="section-title reveal">Nuestro nuevo hogar</h2>
       <div class="divider reveal"><span>✦</span></div>
-      <p class="reveal" style="font-size: .9rem; line-height: 1.85; color: var(--muted); max-width: 600px; margin: 0 auto 2rem;">
-        Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, te invitamos a ver nuestra mesa de regalos.
+      <p class="reveal" style="font-size:.9rem;line-height:1.85;color:var(--muted);max-width:600px;margin:0 auto 1rem">
+        Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, puedes apoyarnos con una transferencia o visitar nuestra mesa en Amazon.
       </p>
-      <a href="https://www.amazon.com.mx/wedding/guest-view/3C7OMUFREAFDN" target="_blank" class="btn-rsvp reveal" style="display: inline-block;">Ver Mesa en Amazon</a>
+
+      <!-- PUNTO 4: CLABE con ícono -->
+      <div class="clabe-box reveal">
+        <svg class="clabe-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="7" width="26" height="18" rx="3"/>
+          <path d="M3 12h26"/>
+          <path d="M8 17h4M8 21h8"/>
+        </svg>
+        <div>
+          <span class="clabe-label">CLABE interbancaria</span>
+          014180568855582545
+        </div>
+      </div>
+
+      <a href="https://www.amazon.com.mx/wedding/guest-view/3C7OMUFREAFDN" target="_blank" class="btn-rsvp reveal" style="display:inline-block">Ver Mesa en Amazon</a>
     </div>
   </section>
 
@@ -854,31 +1103,63 @@
             Tu presencia hará aún más especial este día tan importante para nosotros.
           </p>
 
-          <!-- UBICACIÓN ACTUALIZADA -->
-          <address class="reveal">
-            <strong>Jardín Piedra y Viento</strong><br>
-            Parcela 492 Z1 P1/1, entre Av. Ejidos 1,<br>
-            Santa María Mazatla, Jilotzingo,<br>
-            Estado de México, C.P. 54570.
-          </address>
-          
-          <a href="https://share.google/u8hC2w2zIt4sEmJDd" target="_blank" class="reveal" style="display: inline-block; margin-top: 1rem; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;">
-            Ver ubicación en Google Maps
-          </a>
+          <!-- PUNTO 8: Lugar destacado -->
+          <div class="lugar-highlight reveal">
+            <div class="lugar-icon">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 3C12.5 3 8 7.5 8 13c0 7.5 10 20 10 20S28 20.5 28 13c0-5.5-4.5-10-10-10z"/>
+                <circle cx="18" cy="13" r="3.5"/>
+              </svg>
+            </div>
+            <h3>Jardín Piedra y Viento</h3>
+            <p>
+              Parcela 492 Z1 P1/1, entre Av. Ejidos 1<br>
+              Santa María Mazatla, Jilotzingo<br>
+              Estado de México, C.P. 54570
+            </p>
+            <a href="https://share.google/u8hC2w2zIt4sEmJDd" target="_blank">
+              Ver ubicación en Google Maps →
+            </a>
+          </div>
+
+          <!-- PUNTO 10: Mapa iframe -->
+          <div class="map-wrapper reveal">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.173491565927!2d-99.3520394!3d19.5341638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21b27c7fa3599%3A0xdad4529b8ab2ed51!2sJardin%20Piedra%20y%20Viento!5e0!3m2!1ses-419!2smx!4v1781587961311!5m2!1ses-419!2smx"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación Jardín Piedra y Viento"
+            ></iframe>
+          </div>
         </div>
 
-        <!-- Formulario (MODIFICADO PARA PHP) -->
+        <!-- Formulario -->
         <div>
           <form class="rsvp-form" id="rsvp-form" method="POST" action="enviar.php" novalidate aria-label="Formulario de confirmación">
+
+            <!-- Nombre del titular -->
             <div class="form-group">
-              <label for="name">Nombre completo *</label>
+              <label for="name">Tu nombre completo *</label>
               <input type="text" id="name" name="name" autocomplete="name" placeholder="Tu nombre completo" required />
               <span class="error-msg" id="name-err">Por favor ingresa tu nombre.</span>
             </div>
 
+            <!-- PUNTO 9: Número de invitados -->
             <div class="form-group">
-              <label for="diet">Restricciones alimenticias</label>
-              <textarea id="diet" name="diet" placeholder="Vegetariano, vegano, alergias… (opcional)"></textarea>
+              <label for="num-guests">Número de invitados (incluido tú)</label>
+              <select id="num-guests" name="num_guests">
+                <option value="">Selecciona…</option>
+                <option value="1">Solo yo</option>
+                <option value="2">2 personas</option>
+                <option value="3">3 personas</option>
+                <option value="4">4 personas</option>
+              </select>
+            </div>
+
+            <!-- Nombres adicionales (dinámico) -->
+            <div id="guest-names-container" aria-live="polite">
+              <!-- generado por JS -->
             </div>
 
             <button type="submit" class="btn-rsvp">Confirmar asistencia</button>
@@ -893,7 +1174,7 @@
        FOOTER
   ════════════════════════════════════════ -->
   <footer>
-    <p class="footer-names">Alexia & Cesar</p>
+    <p class="footer-names">Alexia & César</p>
     <p>Con todo nuestro amor &mdash; 2026</p>
   </footer>
 
@@ -903,10 +1184,8 @@
   <script>
     'use strict';
 
-    /* ──────────────────────────────────────────
-       NAV: Cambio de apariencia al hacer scroll
-    ────────────────────────────────────────── */
-    const nav = document.getElementById('main-nav');
+    /* ── NAV ── */
+    const nav  = document.getElementById('main-nav');
     const hero = document.getElementById('hero');
 
     const navObserver = new IntersectionObserver(
@@ -915,12 +1194,8 @@
     );
     navObserver.observe(hero);
 
-
-    /* ──────────────────────────────────────────
-       CONTADOR REGRESIVO (FECHA ACTUALIZADA)
-    ────────────────────────────────────────── */
-    const weddingDate = new Date('2026-11-13 17:00:00');
-
+    /* ── COUNTDOWN ── */
+    const weddingDate = new Date('2026-11-13T17:00:00');
     const els = {
       days:  document.getElementById('cd-days'),
       hours: document.getElementById('cd-hours'),
@@ -931,37 +1206,22 @@
     function pad(n) { return String(n).padStart(2, '0'); }
 
     function updateCountdown() {
-      const now  = new Date();
-      const diff = weddingDate - now;
-
+      const diff = weddingDate - new Date();
       if (diff <= 0) {
-        els.days.textContent  = '00';
-        els.hours.textContent = '00';
-        els.mins.textContent  = '00';
-        els.secs.textContent  = '00';
+        ['days','hours','mins','secs'].forEach(k => els[k].textContent = '00');
         return;
       }
-
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor((diff % 86400000) / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
-
-      els.days.textContent  = pad(d);
-      els.hours.textContent = pad(h);
-      els.mins.textContent  = pad(m);
-      els.secs.textContent  = pad(s);
+      els.days.textContent  = pad(Math.floor(diff / 86400000));
+      els.hours.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+      els.mins.textContent  = pad(Math.floor((diff % 3600000) / 60000));
+      els.secs.textContent  = pad(Math.floor((diff % 60000) / 1000));
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-
-    /* ──────────────────────────────────────────
-       ANIMACIONES DE SCROLL
-    ────────────────────────────────────────── */
+    /* ── REVEAL SCROLL ── */
     const revealEls = document.querySelectorAll('.reveal');
-
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry, i) => {
@@ -973,14 +1233,42 @@
       },
       { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
     );
-
     revealEls.forEach(el => revealObserver.observe(el));
 
+    /* ── GUEST NAMES (combobox dinámico) ── */
+    const numGuestsSelect = document.getElementById('num-guests');
+    const guestContainer  = document.getElementById('guest-names-container');
 
-    /* ──────────────────────────────────────────
-       RSVP — Validación antes de enviar a PHP
-    ────────────────────────────────────────── */
-    const form    = document.getElementById('rsvp-form');
+    numGuestsSelect.addEventListener('change', function () {
+      const count = parseInt(this.value, 10);
+      guestContainer.innerHTML = '';
+
+      if (count >= 2) {
+        guestContainer.classList.add('expanded');
+        for (let i = 2; i <= count; i++) {
+          const div = document.createElement('div');
+          div.className = 'guest-name-field';
+          div.style.animationDelay = `${(i - 2) * 60}ms`;
+          div.innerHTML = `
+            <label for="guest-${i}" style="font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">
+              Nombre del invitado ${i}
+            </label>
+            <input
+              type="text"
+              id="guest-${i}"
+              name="guest_${i}"
+              placeholder="Nombre completo"
+              style="background:transparent;border:none;border-bottom:1px solid var(--border);padding:.65rem 0;font-family:var(--ff-sans);font-size:.9rem;font-weight:300;color:var(--charcoal);outline:none;width:100%"
+            />`;
+          guestContainer.appendChild(div);
+        }
+      } else {
+        guestContainer.classList.remove('expanded');
+      }
+    });
+
+    /* ── RSVP VALIDATION ── */
+    const form = document.getElementById('rsvp-form');
 
     function showError(fieldId, errId, show) {
       const field = document.getElementById(fieldId);
@@ -990,8 +1278,8 @@
     }
 
     form.addEventListener('submit', (e) => {
-      const name = document.getElementById('name').value.trim();
-      let valid = true;
+      const name  = document.getElementById('name').value.trim();
+      let valid   = true;
 
       if (!name) {
         showError('name', 'name-err', true);
@@ -1000,13 +1288,9 @@
         showError('name', 'name-err', false);
       }
 
-      if (!valid) {
-        e.preventDefault(); // Detiene el envío si el nombre está vacío
-      }
-      // Si es válido, el navegador continúa con el action="enviar.php"
+      if (!valid) e.preventDefault();
     });
 
-    // Limpiar error en tiempo real
     document.getElementById('name').addEventListener('input', () => {
       showError('name', 'name-err', false);
     });
