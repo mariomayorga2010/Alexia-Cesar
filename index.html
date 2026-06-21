@@ -699,35 +699,127 @@
     }
 
     /* ─────────────────────────────────────────────
+       DRESS CODE — NUEVA PALETA (variables)
+    ───────────────────────────────────────────── */
+    /* tokens reutilizables para los swatches */
+    .dc-sand   { background-color: #a98b72; }
+    .dc-sage   { background-color: #8b9473; }
+    .dc-fern   { background-color: #50543b; }
+    .dc-forest { background-color: #234233; }
+    .dc-walnut { background-color: #583926; }
+    .dc-auburn { background-color: #833617; }
+
+    /* ─────────────────────────────────────────────
+       MENSAJE "SOLO ADULTOS" — SUTIL EN RSVP
+    ───────────────────────────────────────────── */
+    .adults-note {
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+      background: rgba(169,139,114,.07);
+      border-left: 2px solid #a98b72;
+      border-radius: 0 4px 4px 0;
+      padding: 1.1rem 1.4rem;
+      margin: 1.6rem 0 0;
+    }
+    .adults-note-icon {
+      flex-shrink: 0;
+      color: #a98b72;
+      margin-top: .1rem;
+    }
+    .adults-note-text {
+      font-size: .82rem;
+      line-height: 1.85;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ─────────────────────────────────────────────
+       VERSÍCULO BÍBLICO — BLOQUE AUTÓNOMO DESTACADO
+    ───────────────────────────────────────────── */
+    .versiculo-standalone {
+      background: var(--charcoal);
+      padding: clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .versiculo-standalone::before {
+      content: '\201C';
+      position: absolute;
+      top: -2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--ff-serif);
+      font-size: 16rem;
+      color: rgba(184,150,90,.05);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .versiculo-standalone .versiculo-ref {
+      font-family: var(--ff-sans);
+      font-size: .62rem;
+      font-weight: 400;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.8rem;
+      display: block;
+    }
+    .versiculo-standalone .versiculo-text {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.3rem, 3.2vw, 1.9rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.78;
+      color: var(--cream);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .versiculo-standalone .versiculo-text em {
+      color: var(--gold-light);
+      font-style: normal;
+    }
+    .versiculo-ornament {
+      display: block;
+      color: var(--gold);
+      font-size: 1.1rem;
+      letter-spacing: .45em;
+      margin-top: 2rem;
+      opacity: .55;
+    }
+
+    /* ─────────────────────────────────────────────
        COLOR PALETTE
     ───────────────────────────────────────────── */
     .color-palette-list {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 10px;
-      margin-top: 15px;
-      align-items: center;
-      width: 100%;
+      margin-top: 1.2rem;
     }
     .color-item {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      gap: 12px;
-      width: 120px;
-      font-size: 0.85rem;
+      gap: 5px;
+      font-size: 0.68rem;
       color: var(--muted);
       font-family: 'Courier New', Courier, monospace;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
     .color-swatch {
-      width: 24px;
-      height: 24px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      border: 2px solid rgba(255,255,255,0.55);
       display: inline-block;
-      border: 1px solid rgba(0,0,0,0.05);
+      transition: transform .25s;
     }
+    .color-swatch:hover { transform: scale(1.2); }
 
     /* Foto card */
     .photo-card {
@@ -862,20 +954,25 @@
   </section>
 
   <!-- ════════════════════════════════════════
+       VERSÍCULO BÍBLICO — Corintios 13:4-8
+  ════════════════════════════════════════ -->
+  <div class="versiculo-standalone" aria-label="Cita bíblica">
+    <span class="versiculo-ref reveal">1 Corintios 13:4–8</span>
+    <p class="versiculo-text reveal">
+      El amor es paciente, es bondadoso;<br>
+      el amor no tiene envidia, no es presumido ni orgulloso…<br>
+      Todo lo disculpa, todo lo cree, todo lo espera, todo lo soporta.<br>
+      <em>El amor jamás se extingue.</em>
+    </p>
+    <span class="versiculo-ornament reveal" aria-hidden="true">✦ &nbsp; ✦ &nbsp; ✦</span>
+  </div>
+
+  <!-- ════════════════════════════════════════
        CARRUSEL (Momentos)
   ════════════════════════════════════════ -->
   <div class="gallery-section">
     <div class="gallery-inner reveal">
       <span class="section-label">Nuestros momentos</span>
-      <!-- PUNTO 3: Versículo en lugar de "Momentos que nos trajeron aquí" -->
-      <div class="versiculo-block">
-        <p class="versiculo-ref">Corintios 13:4-8</p>
-        <p class="versiculo-text">
-          El amor es paciente, es bondadoso; el amor no tiene envidia, no es presumido ni orgulloso…
-          Todo lo disculpa, todo lo cree, todo lo espera, todo lo soporta.
-          <em>El amor jamás se extingue.</em>
-        </p>
-      </div>
       <div class="thin-divider"></div>
       <p style="color:var(--muted);font-size:0.9rem;line-height:1.7;max-width:500px">
         Un recorrido por los momentos que nos convirtieron en quienes somos hoy. Cada foto, una razón más para celebrar.
@@ -1011,11 +1108,12 @@
           </svg>
           <h3 class="dc-title">Paleta sugerida</h3>
           <div class="color-palette-list">
-            <div class="color-item"><span class="color-swatch" style="background-color:#B8A28E"></span><span>#B8A28E</span></div>
-            <div class="color-item"><span class="color-swatch" style="background-color:#96806C"></span><span>#96806C</span></div>
-            <div class="color-item"><span class="color-swatch" style="background-color:#76614F"></span><span>#76614F</span></div>
-            <div class="color-item"><span class="color-swatch" style="background-color:#524133"></span><span>#524133</span></div>
-            <div class="color-item"><span class="color-swatch" style="background-color:#36422E"></span><span>#36422E</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color:#a98b72"></span><span>#a98b72</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color:#8b9473"></span><span>#8b9473</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color:#50543b"></span><span>#50543b</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color:#234233"></span><span>#234233</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color:#583926"></span><span>#583926</span></div>
+            <div class="color-item"><span class="color-swatch" style="background-color:#833617"></span><span>#833617</span></div>
           </div>
         </article>
       </div>
@@ -1023,20 +1121,6 @@
       <!-- PUNTO 6 & 7: No niños / Llevar bebidas -->
       <div class="notas-grid" style="margin-top:3rem">
 
-        <!-- No niños -->
-        <article class="nota-card reveal">
-          <svg class="nota-icon" width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="26" cy="26" r="22" stroke="var(--gold)"/>
-            <circle cx="26" cy="14" r="5"/>
-            <path d="M18 24c0-4.4 3.6-8 8-8s8 3.6 8 8v10H18V24z"/>
-            <line x1="8" y1="8" x2="44" y2="44" stroke="#c0392b" stroke-width="2.2"/>
-          </svg>
-          <h3 class="nota-title">Evento para adultos</h3>
-          <p class="nota-desc">
-            Con todo el amor del mundo, es una celebración solo para adultos.<br>
-            Agradecemos tu comprensión.
-          </p>
-        </article>
 
         <!-- Llevar bebidas -->
         <article class="nota-card reveal">
@@ -1066,7 +1150,7 @@
       <h2 class="section-title reveal">Nuestro nuevo hogar</h2>
       <div class="divider reveal"><span>✦</span></div>
       <p class="reveal" style="font-size:.9rem;line-height:1.85;color:var(--muted);max-width:600px;margin:0 auto 1rem">
-        Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, puedes apoyarnos con una transferencia o visitar nuestra mesa en Amazon.
+        Su presencia es, sin duda, el regalo más valioso que pueden ofrecernos. Si en su corazón nace el deseo de sumarse con una ofrenda, con profunda gratitud la recibiremos como un abrazo más en este día tan significativo.
       </p>
 
       <!-- PUNTO 4: CLABE con ícono -->
@@ -1098,6 +1182,17 @@
           <span class="section-label reveal">Confirma tu asistencia</span>
           <h2 class="section-title reveal">Nos encantaría<br>tenerte con nosotros</h2>
           <div class="divider reveal"><span>✦</span></div>
+
+          <!-- Mensaje solo adultos -->
+          <div class="adults-note reveal">
+            <svg class="adults-note-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <p class="adults-note-text">
+              Aunque amamos a los pequeños de la familia, en esta ocasión nuestra boda será una celebración solo para adultos. Gracias por acompañarnos y ser parte de este momento tan especial.
+            </p>
+          </div>
           <p class="reveal">
             Por favor confirma tu asistencia antes del <strong>31 de enero de 2026</strong>.
             Tu presencia hará aún más especial este día tan importante para nosotros.
