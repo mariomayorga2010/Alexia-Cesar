@@ -353,42 +353,99 @@
     /* ─────────────────────────────────────────────
        ITINERARIO
     ───────────────────────────────────────────── */
-    #itinerario { background: var(--warm-white); }
-    #itinerario .section-inner { text-align: center; }
+    #itinerario {
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+    }
+    #itinerario::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 20%, rgba(184,150,90,.06), transparent 55%),
+                         radial-gradient(circle at 85% 80%, rgba(184,150,90,.05), transparent 50%);
+      pointer-events: none;
+    }
+    #itinerario .section-inner { text-align: center; position: relative; z-index: 1; }
+    #itinerario .section-label { color: var(--gold-light); }
+    #itinerario .section-title { color: var(--cream); }
 
-    .itinerario-list {
-      max-width: 480px;
-      margin: 3rem auto 0;
+    .itinerario-timeline {
+      position: relative;
+      max-width: 560px;
+      margin: 3.5rem auto 0;
       display: flex;
       flex-direction: column;
+      gap: 0;
+    }
+
+    /* vertical connecting line */
+    .itinerario-timeline::before {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--border) 8%, var(--border) 92%, transparent);
     }
 
     .itinerario-item {
       display: flex;
-      align-items: baseline;
-      gap: 1.5rem;
-      padding: 1.15rem 0;
-      border-bottom: 1px solid var(--border);
+      align-items: center;
+      gap: 1.6rem;
+      padding: 1.35rem 0;
       text-align: left;
+      opacity: 0;
+      transform: translateX(-18px);
+      transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
+    }
+    .itinerario-item.visible {
+      opacity: 1;
+      transform: translateX(0);
     }
 
-    .itinerario-item:last-child { border-bottom: none; }
+    .itinerario-icon {
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(184,150,90,.08);
+      border: 1px solid var(--border);
+      color: var(--gold-light);
+      transition: background .35s, border-color .35s, transform .35s;
+    }
+    .itinerario-item.visible .itinerario-icon {
+      background: rgba(184,150,90,.14);
+      border-color: var(--gold);
+    }
+    .itinerario-item:hover .itinerario-icon {
+      transform: scale(1.08);
+    }
+
+    .itinerario-body { display: flex; flex-direction: column; gap: .2rem; }
 
     .itinerario-time {
       font-family: var(--ff-serif);
-      font-size: 1.15rem;
+      font-size: 1.05rem;
+      font-style: italic;
       font-weight: 400;
-      color: var(--gold);
-      min-width: 5.2rem;
-      flex-shrink: 0;
+      color: var(--gold-light);
+      letter-spacing: .03em;
     }
 
     .itinerario-event {
       font-family: var(--ff-sans);
-      font-size: .88rem;
+      font-size: .82rem;
       font-weight: 300;
-      letter-spacing: .04em;
-      color: var(--charcoal);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(247,243,238,.85);
     }
 
     /* ─────────────────────────────────────────────
@@ -565,7 +622,90 @@
     /* ─────────────────────────────────────────────
        5. RSVP
     ───────────────────────────────────────────── */
-    #rsvp { background: var(--cream); }
+    #rsvp {
+      background: var(--charcoal);
+      padding-top: .5rem;
+    }
+
+    #rsvp .section-inner { padding-top: clamp(4.5rem, 11vw, 7.5rem); }
+
+    #rsvp .section-label { color: var(--gold-light); }
+    #rsvp .section-title { color: var(--cream); }
+
+    #rsvp .adults-note { background: rgba(184,150,90,.08); border-left-color: var(--gold-light); }
+    #rsvp .adults-note-text { color: rgba(247,243,238,.7); }
+    #rsvp .adults-note-icon { color: var(--gold-light); }
+    #rsvp .rsvp-info > p.reveal { color: rgba(247,243,238,.65); }
+
+    .rsvp-card {
+      background: var(--warm-white);
+      border-radius: 10px;
+      border-top: 4px solid var(--gold);
+      box-shadow: 0 25px 70px rgba(0,0,0,.35);
+      padding: clamp(2rem, 5vw, 3rem);
+    }
+
+    .btn-add-guest {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: transparent;
+      border: 1px dashed var(--gold);
+      color: var(--gold);
+      font-family: var(--ff-sans);
+      font-size: .68rem;
+      font-weight: 400;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: .7rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background .3s, color .3s, border-color .3s;
+    }
+    .btn-add-guest:hover { background: rgba(184,150,90,.1); }
+    .btn-add-guest:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+      background: transparent;
+    }
+    .btn-add-guest-icon {
+      font-size: 1rem;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .guest-extra-field {
+      display: flex;
+      align-items: flex-end;
+      gap: .8rem;
+      animation: fadeSlide .4s var(--ease-out) both;
+    }
+    .guest-extra-field .form-group { flex: 1; }
+    .btn-remove-guest {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: .95rem;
+      cursor: pointer;
+      padding: .5rem;
+      line-height: 1;
+      transition: color .3s;
+    }
+    .btn-remove-guest:hover { color: #c0392b; }
+
+    .btn-rsvp-primary {
+      width: 100%;
+      text-align: center;
+      background: var(--gold);
+      color: #fff;
+      padding: 1.15rem 2.5rem;
+      font-size: .78rem;
+      box-shadow: 0 10px 30px rgba(184,150,90,.35);
+    }
+    .btn-rsvp-primary:hover { background: var(--charcoal); }
+
+    .rsvp-wrapper { gap: 3.5rem; }
 
     .rsvp-wrapper {
       display: grid;
@@ -1114,26 +1254,75 @@ acerco un paso más a este día.
       <h2 class="section-title reveal">El inicio a nuestro Altar</h2>
       <div class="divider reveal"><span>✦</span></div>
 
-      <div class="itinerario-list">
-        <div class="itinerario-item reveal">
-          <span class="itinerario-time">4:00 pm</span>
-          <span class="itinerario-event">Ceremonia</span>
+      <div class="itinerario-timeline" id="itinerario-timeline">
+        <div class="itinerario-item">
+          <div class="itinerario-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="8.5" cy="15.5" r="4.5"/>
+              <circle cx="15.5" cy="15.5" r="4.5"/>
+              <path d="M12 4v4"/>
+              <path d="M9 4h6"/>
+            </svg>
+          </div>
+          <div class="itinerario-body">
+            <span class="itinerario-time">4:00 pm</span>
+            <span class="itinerario-event">Ceremonia</span>
+          </div>
         </div>
-        <div class="itinerario-item reveal">
-          <span class="itinerario-time">6:00 pm</span>
-          <span class="itinerario-event">Coctel de bienvenida</span>
+
+        <div class="itinerario-item">
+          <div class="itinerario-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 3l1 6a5 5 0 0010 0l1-6"/>
+              <path d="M12 14v7"/>
+              <path d="M8 21h8"/>
+            </svg>
+          </div>
+          <div class="itinerario-body">
+            <span class="itinerario-time">6:00 pm</span>
+            <span class="itinerario-event">Coctel de bienvenida</span>
+          </div>
         </div>
-        <div class="itinerario-item reveal">
-          <span class="itinerario-time">7:00 pm</span>
-          <span class="itinerario-event">Cena</span>
+
+        <div class="itinerario-item">
+          <div class="itinerario-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 2v7a2 2 0 002 2v11"/>
+              <path d="M7 2v7"/>
+              <path d="M10 2v7"/>
+              <path d="M17 2c-1.5 1.5-2 3-2 5s.5 3.5 2 5v10"/>
+            </svg>
+          </div>
+          <div class="itinerario-body">
+            <span class="itinerario-time">7:00 pm</span>
+            <span class="itinerario-event">Cena</span>
+          </div>
         </div>
-        <div class="itinerario-item reveal">
-          <span class="itinerario-time">8:00 pm</span>
-          <span class="itinerario-event">Inicia la fiesta</span>
+
+        <div class="itinerario-item">
+          <div class="itinerario-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 18V5l12-2v13"/>
+              <circle cx="6" cy="18" r="3"/>
+              <circle cx="18" cy="16" r="3"/>
+            </svg>
+          </div>
+          <div class="itinerario-body">
+            <span class="itinerario-time">8:00 pm</span>
+            <span class="itinerario-event">Inicia la fiesta</span>
+          </div>
         </div>
-        <div class="itinerario-item reveal">
-          <span class="itinerario-time">12:00 am</span>
-          <span class="itinerario-event">Fin de la celebración</span>
+
+        <div class="itinerario-item">
+          <div class="itinerario-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.5A8.5 8.5 0 1111.5 3 6.5 6.5 0 0021 12.5z"/>
+            </svg>
+          </div>
+          <div class="itinerario-body">
+            <span class="itinerario-time">12:00 am</span>
+            <span class="itinerario-event">Fin de la celebración</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1315,7 +1504,7 @@ acerco un paso más a este día.
         </div>
 
         <!-- Formulario -->
-        <div>
+        <div class="rsvp-card reveal">
           <form class="rsvp-form" id="rsvp-form" method="POST" action="enviar.php" novalidate aria-label="Formulario de confirmación">
 
             <p style="font-size:.78rem;line-height:1.8;color:var(--muted);font-style:italic">
@@ -1329,7 +1518,15 @@ acerco un paso más a este día.
               <span class="error-msg" id="name-err">Por favor ingresa tu nombre.</span>
             </div>
 
-            <button type="submit" class="btn-rsvp">Confirmar asistencia</button>
+            <!-- Invitados adicionales (dinámico, máx. 4) -->
+            <div id="extra-guests"></div>
+
+            <button type="button" id="add-guest-btn" class="btn-add-guest">
+              <span class="btn-add-guest-icon" aria-hidden="true">+</span>
+              Agregar otro invitado
+            </button>
+
+            <button type="submit" class="btn-rsvp btn-rsvp-primary">Confirmar asistencia</button>
           </form>
         </div>
 
@@ -1401,6 +1598,67 @@ acerco un paso más a este día.
       { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
     );
     revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ── ITINERARIO TIMELINE REVEAL ── */
+    const itinerarioItems = document.querySelectorAll('#itinerario-timeline .itinerario-item');
+    const itinerarioObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Array.from(itinerarioItems).indexOf(entry.target);
+            setTimeout(() => entry.target.classList.add('visible'), idx * 150);
+            itinerarioObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: '0px 0px -60px 0px' }
+    );
+    itinerarioItems.forEach(el => itinerarioObserver.observe(el));
+
+    /* ── RSVP: AGREGAR INVITADOS (máx. 4) ── */
+    const addGuestBtn          = document.getElementById('add-guest-btn');
+    const extraGuestsContainer = document.getElementById('extra-guests');
+    const MAX_GUESTS = 4;
+    let guestCount = 1;
+
+    function renumberGuestFields() {
+      const fields = extraGuestsContainer.querySelectorAll('.guest-extra-field');
+      fields.forEach((field, i) => {
+        const n = i + 2;
+        field.querySelector('label').textContent = `Nombre del invitado ${n}`;
+        field.querySelector('input').placeholder = `Nombre del invitado ${n}`;
+      });
+    }
+
+    function updateAddGuestBtn() {
+      addGuestBtn.disabled = guestCount >= MAX_GUESTS;
+    }
+
+    addGuestBtn.addEventListener('click', () => {
+      if (guestCount >= MAX_GUESTS) return;
+      guestCount++;
+      const n = guestCount;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'guest-extra-field';
+      wrapper.innerHTML = `
+        <div class="form-group">
+          <label for="guest-${n}">Nombre del invitado ${n}</label>
+          <input type="text" id="guest-${n}" name="guest_${n}" placeholder="Nombre del invitado ${n}" />
+        </div>
+        <button type="button" class="btn-remove-guest" aria-label="Quitar invitado">×</button>
+      `;
+      extraGuestsContainer.appendChild(wrapper);
+
+      wrapper.querySelector('.btn-remove-guest').addEventListener('click', () => {
+        wrapper.remove();
+        guestCount--;
+        renumberGuestFields();
+        updateAddGuestBtn();
+      });
+
+      updateAddGuestBtn();
+    });
 
     /* ── RSVP VALIDATION ── */
     const form = document.getElementById('rsvp-form');
