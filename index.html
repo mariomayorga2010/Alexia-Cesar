@@ -704,6 +704,12 @@
       box-shadow: 0 10px 30px rgba(184,150,90,.35);
     }
     .btn-rsvp-primary:hover { background: var(--charcoal); }
+    .btn-rsvp-primary:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      background: var(--gold);
+      box-shadow: none;
+    }
 
     .rsvp-wrapper { gap: 3.5rem; }
 
@@ -1107,8 +1113,8 @@
   ════════════════════════════════════════ -->
   <section id="countdown" aria-label="Cuenta regresiva">
     <div class="section-inner">
-      <span class="section-label reveal">Faltan tan solo</span>
       <h2 class="section-title reveal">Cada día, más cerca<br>de nuestro gran día</h2>
+      <span class="section-label reveal">Faltan tan solo</span>
 
       <div class="countdown-grid" id="countdown-grid" role="timer" aria-live="polite" aria-atomic="true">
         <div class="countdown-unit reveal">
@@ -1250,8 +1256,7 @@ acerco un paso más a este día.
   ════════════════════════════════════════ -->
   <section id="itinerario" aria-label="Itinerario">
     <div class="section-inner">
-      <span class="section-label reveal">Itinerario</span>
-      <h2 class="section-title reveal">El inicio a nuestro Altar</h2>
+      <h2 class="section-title reveal">Itinerario</h2>
       <div class="divider reveal"><span>✦</span></div>
 
       <div class="itinerario-timeline" id="itinerario-timeline">
@@ -1265,7 +1270,7 @@ acerco un paso más a este día.
             </svg>
           </div>
           <div class="itinerario-body">
-            <span class="itinerario-time">4:00 pm</span>
+            <span class="itinerario-time">4:30 pm</span>
             <span class="itinerario-event">Ceremonia</span>
           </div>
         </div>
@@ -1348,8 +1353,8 @@ acerco un paso más a este día.
           </svg>
           <h3 class="dc-title">Caballeros</h3>
           <p class="dc-desc">
-            <a href="https://pin.it/3knGnZIgb" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.05em">
-              Ver inspiración en Pinterest →
+            <a href="DC.pdf" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.05em">
+              Abrir Dresscode →
             </a>
           </p>
         </article>
@@ -1363,8 +1368,8 @@ acerco un paso más a este día.
           </svg>
           <h3 class="dc-title">Damas</h3>
           <p class="dc-desc">
-            <a href="https://pin.it/5vGoF2pxe" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.05em">
-              Ver inspiración en Pinterest →
+            <a href="DC.pdf" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.05em">
+              Abrir Dresscode →
             </a>
           </p>
         </article>
@@ -1484,21 +1489,6 @@ acerco un paso más a este día.
           <h2 class="section-title reveal">Nos encantaría<br>tenerte con nosotros</h2>
           <div class="divider reveal"><span>✦</span></div>
 
-          <!-- Mensaje solo adultos -->
-          <div class="adults-note reveal">
-            <svg class="adults-note-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 12l2 2 4-4"/>
-            </svg>
-            <p class="adults-note-text">
-              Aunque amamos a los pequeños de la familia, en esta ocasión nuestra boda será una celebración solo para adultos. Gracias por acompañarnos y ser parte de este momento tan especial.
-            </p>
-          </div>
-          <p class="reveal">
-            Por favor confirma tu asistencia antes del <strong>31 de octubre de 2026</strong>.
-            Tu presencia hará aún más especial este día tan importante para nosotros.
-          </p>
-
           <!-- PUNTO 8: Lugar destacado -->
          
         </div>
@@ -1526,7 +1516,19 @@ acerco un paso más a este día.
               Agregar otro invitado
             </button>
 
-            <button type="submit" class="btn-rsvp btn-rsvp-primary">Confirmar asistencia</button>
+            <!-- Correo de confirmación -->
+            <div class="form-group">
+              <label for="email">Correo de confirmación *</label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="tu@correo.com" required />
+              <span class="error-msg" id="email-err">Por favor ingresa un correo válido.</span>
+            </div>
+
+            <button type="submit" class="btn-rsvp btn-rsvp-primary" id="submit-btn" disabled>Confirmar asistencia</button>
+
+            <p style="font-size:.78rem;line-height:1.8;color:var(--muted);text-align:center">
+              Por favor confirma tu asistencia antes del <strong>31 de octubre de 2026</strong>.
+              Tu presencia hará aún más especial este día tan importante para nosotros.
+            </p>
           </form>
         </div>
 
@@ -1670,6 +1672,32 @@ acerco un paso más a este día.
       err.classList.toggle('visible', show);
     }
 
+    /* ── Correo: habilita el botón solo con un correo válido ── */
+    const emailInput = document.getElementById('email');
+    const submitBtn  = document.getElementById('submit-btn');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function isEmailValid() {
+      return emailPattern.test(emailInput.value.trim());
+    }
+
+    function updateSubmitState() {
+      submitBtn.disabled = !isEmailValid();
+    }
+
+    emailInput.addEventListener('input', () => {
+      if (isEmailValid()) showError('email', 'email-err', false);
+      updateSubmitState();
+    });
+
+    emailInput.addEventListener('blur', () => {
+      if (emailInput.value.trim() && !isEmailValid()) {
+        showError('email', 'email-err', true);
+      }
+    });
+
+    updateSubmitState();
+
     form.addEventListener('submit', (e) => {
       const name  = document.getElementById('name').value.trim();
       let valid   = true;
@@ -1679,6 +1707,13 @@ acerco un paso más a este día.
         valid = false;
       } else {
         showError('name', 'name-err', false);
+      }
+
+      if (!isEmailValid()) {
+        showError('email', 'email-err', true);
+        valid = false;
+      } else {
+        showError('email', 'email-err', false);
       }
 
       if (!valid) e.preventDefault();
