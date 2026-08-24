@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <style>
     /* ─────────────────────────────────────────────
@@ -710,6 +711,29 @@
       background: var(--gold);
       box-shadow: none;
     }
+
+    .form-status {
+      display: none;
+      font-size: .78rem;
+      line-height: 1.7;
+      text-align: center;
+      padding: .85rem 1rem;
+      border-radius: 4px;
+    }
+    .form-status.visible { display: block; }
+    .form-status.sending {
+      background: rgba(184,150,90,.08);
+      color: var(--gold);
+    }
+    .form-status.success {
+      background: rgba(80,84,59,.1);
+      color: #50543b;
+    }
+    .form-status.error {
+      background: rgba(192,57,43,.08);
+      color: #c0392b;
+    }
+    .form-status a { color: inherit; text-decoration: underline; }
 
     .rsvp-wrapper { gap: 3.5rem; }
 
@@ -1495,7 +1519,7 @@ acerco un paso más a este día.
 
         <!-- Formulario -->
         <div class="rsvp-card reveal">
-          <form class="rsvp-form" id="rsvp-form" method="POST" action="enviar.php" novalidate aria-label="Formulario de confirmación">
+          <form class="rsvp-form" id="rsvp-form" novalidate aria-label="Formulario de confirmación">
 
             <p style="font-size:.78rem;line-height:1.8;color:var(--muted);font-style:italic">
               Al confirmar, por favor indícanos los nombres de las personas que asistirán. Si tu invitación es individual, solo necesitamos tu nombre.
@@ -1524,6 +1548,8 @@ acerco un paso más a este día.
             </div>
 
             <button type="submit" class="btn-rsvp btn-rsvp-primary" id="submit-btn" disabled>Confirmar asistencia</button>
+
+            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
 
             <p style="font-size:.78rem;line-height:1.8;color:var(--muted);text-align:center">
               Por favor confirma tu asistencia antes del <strong>31 de octubre de 2026</strong>.
@@ -1698,7 +1724,52 @@ acerco un paso más a este día.
 
     updateSubmitState();
 
+    /* ── ENVÍO DEL FORMULARIO (sin backend, vía EmailJS) ──
+       1. Crea una cuenta gratuita en https://www.emailjs.com
+       2. Agrega un "Email Service" (ej. conecta un Gmail) → copia el Service ID
+       3. Crea un "Email Template" → copia el Template ID
+          - En el template, configura:
+              To Email:  mariomayorga2010@gmail.com   (fijo, no variable)
+              CC:        {{cc_email}}
+              Subject:   {{subject}}
+          - En el cuerpo del mensaje usa: {{guest_list}}  y  {{cc_email}}
+       4. Copia tu Public Key desde Account → General
+       5. Reemplaza los 3 valores de abajo
+       6. (Recomendado) En EmailJS → Account → Security, restringe los dominios
+          permitidos a tu URL de GitHub Pages, para que nadie más use tus llaves.
+    ── */
+    const EMAILJS_PUBLIC_KEY  = 'Ggv9eMYLC_7B30RFb';
+    const EMAILJS_SERVICE_ID  = 'service_lor5poj';
+    const EMAILJS_TEMPLATE_ID = 'template_de68zzr';
+
+    if (window.emailjs) {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    }
+
+    const statusEl = document.getElementById('form-status');
+
+    function setStatus(type, message) {
+      statusEl.className = 'form-status visible ' + type;
+      statusEl.textContent = message;
+    }
+
+    function clearStatus() {
+      statusEl.className = 'form-status';
+      statusEl.textContent = '';
+    }
+
+    function collectGuestNames() {
+      const names = [document.getElementById('name').value.trim()];
+      extraGuestsContainer.querySelectorAll('input[type="text"]').forEach((input) => {
+        const val = input.value.trim();
+        if (val) names.push(val);
+      });
+      return names;
+    }
+
     form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
       const name  = document.getElementById('name').value.trim();
       let valid   = true;
 
@@ -1716,11 +1787,43 @@ acerco un paso más a este día.
         showError('email', 'email-err', false);
       }
 
-      if (!valid) e.preventDefault();
+      if (!valid) return;
+
+      if (EMAILJS_PUBLIC_KEY === 'TU_PUBLIC_KEY') {
+        setStatus('error', 'El envío por correo aún no está configurado (faltan las llaves de EmailJS). Contacta a los novios directamente mientras tanto.');
+        return;
+      }
+
+      const guestNames  = collectGuestNames();
+      const firstName   = guestNames[0];
+      const guestList   = guestNames.map((n, i) => `${i + 1}. ${n}`).join('\n');
+      const ccEmail     = emailInput.value.trim();
+      const subject     = `Confirmación de invitados... ${firstName}`;
+
+      submitBtn.disabled = true;
+      setStatus('sending', 'Enviando tu confirmación…');
+
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        subject: subject,
+        cc_email: ccEmail,
+        guest_list: guestList,
+        guest_count: guestNames.length,
+        main_name: firstName
+      }).then(() => {
+        setStatus('success', '¡Gracias! Tu confirmación fue enviada con éxito. Recibirás una copia en tu correo.');
+        form.reset();
+        extraGuestsContainer.innerHTML = '';
+        guestCount = 1;
+        updateAddGuestBtn();
+      }).catch(() => {
+        setStatus('error', 'No pudimos enviar tu confirmación. Por favor intenta de nuevo o escríbenos directamente a mariomayorga2010@gmail.com.');
+        submitBtn.disabled = !isEmailValid();
+      });
     });
 
     document.getElementById('name').addEventListener('input', () => {
       showError('name', 'name-err', false);
+      clearStatus();
     });
 
   </script>
