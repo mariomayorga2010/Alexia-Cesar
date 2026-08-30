@@ -16,7 +16,9 @@
        3. Crea un "Email Template"         → copia el Template ID
           En el template configura:
             To Email : mariomayorga2010@gmail.com   (fijo)
-            CC       : {{cc_email}}
+            Cc       : {{cc_email}}                  (copia al invitado)
+            Bcc      : ale_m_lozada@hotmail.com      (copia para Ale)
+            Reply To : {{email}}
             Subject  : {{subject}}
             Cuerpo   : {{guest_list}} · {{guest_count}} · {{main_name}}
                        {{phone}}      → celular con formato (+52 55 1234 5678)
@@ -665,6 +667,7 @@
       var payload = {
         subject:     'Confirmación de invitados… ' + firstName,
         cc_email:    emailInput.value.trim(),
+        email:       emailInput.value.trim(),      // usada por el campo Reply To del template
         guest_list:  guestNames.map(function (n, i) { return (i + 1) + '. ' + n; }).join('\n'),
         guest_count: guestNames.length,
         main_name:   firstName,
